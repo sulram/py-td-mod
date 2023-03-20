@@ -1,5 +1,28 @@
 import math
 
+def cubic_bezier_point(t, y0, y1, y2, y3):
+    """
+    Calculates a point on a cubic Bezier curve for a given value of t.
+
+    Args:
+        t (float): The value of t (between 0 and 1) to calculate the point for.
+        y0 (float): The starting y-coordinate of the curve.
+        y1 (float): The first control point y-coordinate of the curve.
+        y2 (float): The second control point y-coordinate of the curve.
+        y3 (float): The ending y-coordinate of the curve.
+
+    Returns:
+        The y-coordinate on the cubic Bezier curve for the given value of t.
+    """
+    # Calculate the point on the curve using the cubic Bezier equation
+    return (
+        pow(1 - t, 3) * y0 +
+        3 * pow(1 - t, 2) * t * y1 +
+        3 * (1 - t) * pow(t, 2) * y2 +
+        pow(t, 3) * y3
+    )
+
+
 def custom_ease(easing_func, t, b, c, d):
     """
     Animate a value using a normalized easing function.
