@@ -1,5 +1,26 @@
 import math
 
+def custom_ease(easing_func, t, b, c, d):
+    """
+    Animate a value using a normalized easing function.
+
+    Args:
+        easing_func: A reference to a normalized easing function.
+        t: The current time value for the animation.
+        b: The starting value of the animation.
+        c: The total change in value for the animation.
+        d: The total duration of the animation.
+
+    Returns:
+        The eased value for the current time, mapped to the range of values you want.
+    """
+    # Normalize t to a value between 0 and 1
+    t = t / d
+    # Call the specified easing function with the normalized value of t
+    eased_t = easing_func(t)
+    # Map the eased value to the range of values you want
+    return b + eased_t * c
+
 # Linear
 def linear(t):
     return t
